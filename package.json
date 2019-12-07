@@ -1,0 +1,28 @@
+{
+  "name": "action-name",
+  "version": "1.0.0",
+  "description": "Action's description",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EndBug/action-name.git"
+  },
+  "author": "Federico Grandi <fgrandi30@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EndBug/action-name/issues"
+  },
+  "homepage": "https://github.com/EndBug/action-name#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0"
+  },
+  "devDependencies": {
+    "@node-minify/babel-minify": "^5.2.0",
+    "@node-minify/cli": "^5.2.1",
+    "@types/node": "^12.12.14",
+    "typescript": "^3.7.3"
+  }
+}
