@@ -1,5 +1,8 @@
 name: Build
-on: push
+on:
+  push:
+    branches-ignore:
+      - dist
 
 jobs:
   build:
@@ -7,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
-          node-version: 12.0.0
+          node-version: 12.x
 
       - name: Install dependencies
         run: npm install
@@ -21,10 +24,8 @@ jobs:
         run: npm run build
 
       - name: Commit changes
-        uses: EndBug/add-and-commit@v2.1.1
+        uses: EndBug/add-and-commit@v2
         with:
-          author_name: Federico Grandi
-          author_email: fgrandi30@gmail.com
           force: true
           message: "[auto] Update compiled version"
           path: lib
