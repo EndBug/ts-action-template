@@ -1,16 +1,14 @@
-name: Build
+name: Lint
 on:
   push:
-    branches:
-      - master
     paths:
       - "src/**"
       - "package.json"
-      - ".github/workflows/build.yml"
+      - ".github/workflows/lint.yml"
 
 jobs:
-  build:
-    name: Build compiled JS version
+  lint:
+    name: Lint source code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,14 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Compile TypeScript into compressed JavaScript
-        run: npm run build
+      - name: Run ESLint
+        run: npm run lint:fix
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
-          add: lib
-          message: "[auto] Update compiled version"
-          force: true
+          add: src
+          message: "[auto] Lint source code"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
